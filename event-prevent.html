@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>event prevent</title>
+  <style>
+    div {
+      width: 250px;
+      height: 250px;
+      background-color: yellow;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <input type="checkbox">
+  </div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <script>
+    document.addEventListener('wheel', event => {
+      console.log('scrolling');
+      event.preventDefault();
+    },
+    { passive: false}
+    );
+    // scrolling 같이 기본적으로 passive 가 true로 설정되어 있는것은 그냥 그대로 사용하는것이 좋다
+    // 브라우저의 preventDefault()를 호출하지 않는것이 좋음
+    
+    const checkbox = document.querySelector('input');
+    checkbox.addEventListener('click', event => {
+      console.log('checked');
+      event.preventDefault();
+    });
+  </script>
+</body>
+</html>
